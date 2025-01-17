@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('equipment_history_type', 50);
             $table->foreignId('equipment_id')->references('equipment_id')->on('equipment')->onDelete('cascade');
             $table->integer('total');
-            $table->foreignId('document_id')->references('document_id')->on('document')->onDelete('cascade');
+            $table->foreignId('document_id')->references('document_id')->on('document')->onDelete('cascade')->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();

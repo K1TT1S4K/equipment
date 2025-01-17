@@ -17,9 +17,9 @@ return new class extends Migration
             $table->text('equipment_name');
             $table->decimal('equipment_unit_price', 10, 2)->nullable();
             $table->text('description')->nullable();
-            $table->foreignID('user_id')->references('user_id')->on('users')->onDelete('cascade'); // แก้ให้ถูกต้อง
+            $table->foreignID('user_id')->nullable()->references('user_id')->on('users')->onDelete('cascade'); // แก้ให้ถูกต้อง
             $table->string('location_of_equipment', 100)->nullable();
-            $table->string('equipment_unit', 100);
+            $table->string('equipment_unit', 100)->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();
