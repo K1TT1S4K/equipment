@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
-            $table->id('user_id');
-            $table->string('username', 100);
-            $table->string('prefix', 50);
-            $table->string('first_name', 100);
-            $table->string('last_name', 100);
-            $table->string('user_type', 50);
-            $table->string('email', 100)->unique();
-            $table->string('password', 50);
+        Schema::create('document', function (Blueprint $table) {
+            $table->id('document_id');
+            $table->string('document_path', 300);
+            $table->foreignID('document_type_id')->references('document_type_id')->on('document_type')->onDelete('cascade');
+            $table->date('document_date');
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();
@@ -30,6 +26,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('document');
     }
 };

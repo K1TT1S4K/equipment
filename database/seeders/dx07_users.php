@@ -6,7 +6,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class UsersTableSeeder extends Seeder
+class Dx07_users extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,7 +18,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'user_id' => 1,
                     'username' => 'user11',
-                    'prefix' => 'นาง',
+                    'prefix_id' => 1,
                     'first_name' => 'สุหรรษา',
                     'last_name' => 'ใจหนึ่ง',
                     'user_type' => 'ผู้ปฏิบัติงานบริหาร',
@@ -34,7 +34,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'user_id' => 2,
                     'username' => 'user22',
-                    'prefix' => 'อ.',
+                    'prefix_id' => 2,
                     'first_name' => 'นิพนธ์',
                     'last_name' => 'พิมพ์เบ้าธรรม',
                     'user_type' => 'ผู้ดูแลครุภัณฑ์',
@@ -50,7 +50,7 @@ class UsersTableSeeder extends Seeder
                 [
                     'user_id' => 3,
                     'username' => 'user33',
-                    'prefix' => 'ผศ.ดร.',
+                    'prefix_id' => 3,
                     'first_name' => 'ทองมี',
                     'last_name' => 'ละครพล',
                     'user_type' => 'ผู้ดูแลครุภัณฑ์',

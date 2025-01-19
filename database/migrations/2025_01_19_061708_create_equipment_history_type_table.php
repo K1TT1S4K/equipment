@@ -9,13 +9,11 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('document', function (Blueprint $table) {
-            $table->id('document_id');
-            $table->string('document_path', 300);
-            $table->string('document_type', 100);
-            $table->date('document_date');
+        Schema::create('equipment_history_type', function (Blueprint $table) {
+            $table->id('equipment_history_type_id');
+            $table->string('equipment_history_type_name', 200);
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();
@@ -24,8 +22,11 @@ return new class extends Migration
         });
     }
 
-    public function down()
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
     {
-        Schema::dropIfExists('document');
+        Schema::dropIfExists('equipment_history_typpe');
     }
 };

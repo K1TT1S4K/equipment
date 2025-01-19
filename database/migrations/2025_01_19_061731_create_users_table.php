@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('equipment_history', function (Blueprint $table) {
-            $table->id('equipment_history_id');
-            $table->string('equipment_history_type', 50);
-            $table->foreignId('equipment_id')->references('equipment_id')->on('equipment')->onDelete('cascade');
-            $table->integer('total');
-            $table->foreignId('document_id')->references('document_id')->on('document')->onDelete('cascade')->nullable();
+        Schema::create('users', function (Blueprint $table) {
+            $table->id('user_id');
+            $table->string('username', 100);
+            $table->foreignID('prefix_id')->references('prefix_id')->on('prefix')->onDelete('cascade');
+            $table->string('first_name', 100);
+            $table->string('last_name', 100);
+            $table->string('user_type', 50);
+            $table->string('email', 100)->unique();
+            $table->string('password', 50);
             $table->timestamps();
             $table->softDeletes();
             $table->integer('created_by')->nullable();
@@ -27,6 +30,6 @@ return new class extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('equipment_history');
+        Schema::dropIfExists('users');
     }
 };

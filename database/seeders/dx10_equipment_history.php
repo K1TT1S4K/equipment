@@ -7,7 +7,7 @@ use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
 
-class EquipmentHistoryTableSeeder extends Seeder
+class Dx10_equipment_history extends Seeder
 {
     /**
      * Run the database seeds.
@@ -17,7 +17,7 @@ class EquipmentHistoryTableSeeder extends Seeder
         DB::table('equipment_history')->insert([
             [
                 'equipment_history_id' => 1,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 1,
                 'total' => 55,
                 'document_id' => 7,
@@ -30,7 +30,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 2,
-                'equipment_history_type' => 'โอน',
+                'equipment_history_type_id' => 2,
                 'equipment_id' => 1,
                 'total' => 55,
                 'document_id' => 8,
@@ -43,7 +43,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 3,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 2,
                 'total' => 1,
                 'document_id' => 7,
@@ -56,7 +56,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 4,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 3,
                 'total' => 1,
                 'document_id' => 7,
@@ -69,7 +69,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 5,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 4,
                 'total' => 1,
                 'document_id' => 7,
@@ -82,7 +82,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 6,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 5,
                 'total' => 1,
                 'document_id' => 7,
@@ -95,7 +95,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 7,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 6,
                 'total' => 1,
                 'document_id' => 7,
@@ -108,7 +108,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 8,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 7,
                 'total' => 1,
                 'document_id' => 7,
@@ -121,7 +121,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 9,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 8,
                 'total' => 1,
                 'document_id' => 7,
@@ -134,7 +134,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 10,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 9,
                 'total' => 1,
                 'document_id' => 7,
@@ -147,7 +147,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 11,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 10,
                 'total' => 1,
                 'document_id' => 7,
@@ -160,7 +160,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 12,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 11,
                 'total' => 1,
                 'document_id' => 9,
@@ -173,7 +173,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 13,
-                'equipment_history_type' => 'แทงจำหน่าย',
+                'equipment_history_type_id' => 3,
                 'equipment_id' => 12,
                 'total' => 1,
                 'document_id' => 10,
@@ -186,7 +186,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 14,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 13,
                 'total' => 1,
                 'document_id' => 9,
@@ -199,7 +199,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 15,
-                'equipment_history_type' => 'แทงจำหน่าย',
+                'equipment_history_type_id' => 3,
                 'equipment_id' => 13,
                 'total' => 1,
                 'document_id' => 10,
@@ -212,7 +212,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 16,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 14,
                 'total' => 1,
                 'document_id' => 7,
@@ -225,7 +225,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 17,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 15,
                 'total' => 1,
                 'document_id' => 7,
@@ -238,7 +238,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 18,
-                'equipment_history_type' => 'โอน',
+                'equipment_history_type_id' => 2,
                 'equipment_id' => 15,
                 'total' => 1,
                 'document_id' => 11,
@@ -251,7 +251,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 19,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 16,
                 'total' => 1,
                 'document_id' => 7,
@@ -264,7 +264,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 20,
-                'equipment_history_type' => 'โอน',
+                'equipment_history_type_id' => 2,
                 'equipment_id' => 16,
                 'total' => 1,
                 'document_id' => 12,
@@ -277,7 +277,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 21,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 17,
                 'total' => 1,
                 'document_id' => 7,
@@ -290,7 +290,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 22,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 18,
                 'total' => 1,
                 'document_id' => 13,
@@ -303,7 +303,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 23,
-                'equipment_history_type' => 'แทงจำหน่าย',
+                'equipment_history_type_id' => 3,
                 'equipment_id' => 18,
                 'total' => 1,
                 'document_id' => 14,
@@ -316,7 +316,7 @@ class EquipmentHistoryTableSeeder extends Seeder
             ],
             [
                 'equipment_history_id' => 24,
-                'equipment_history_type' => 'เพิ่ม',
+                'equipment_history_type_id' => 1,
                 'equipment_id' => 19,
                 'total' => 1,
                 'document_id' => 7,
