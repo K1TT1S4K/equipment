@@ -70,45 +70,71 @@ new class extends Component {
 }; ?>
 
 <section class="w-full">
-    @include('partials.settings-heading')
 
-    <x-settings.layout :heading="__('Profile')" :subheading="__('Update your name and email address')">
-        <form wire:submit="updateProfileInformation" class="my-6 w-full space-y-6">
-            <flux:input wire:model="name" :label="__('Name')" type="text" name="name" required autofocus autocomplete="name" />
+    <x-settings.layout>
+        <x-slot name="heading">
+            <h2 class="font-semibold text-xl text-dark leading-tight">
+                {{__('Profile')}}
+            </h2>
+        </x-slot>
+        <form wire:submit.prevent="updateProfileInformation">
+            <div class="row">
+                <!-- ชื่อ -->
+                <div class="mb-3 col-6">
+                    <label for="name" class="form-label text-dark">{{ __('Username') }}</label>
+                    <input type="text" id="name" name="name" class="form-control" wire:model="name" required autofocus autocomplete="name">
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="fname" class="form-label text-dark">{{ __('Prefix') }}</label>
+                    <input type="text" id="name" name="name" class="form-control" required autofocus autocomplete="name">
+                </div>
+            </div>
 
-            <div>
-                <flux:input wire:model="email" :label="__('Email')" type="email" name="email" required autocomplete="email" />
+            <div class="row">
+                <!-- ชื่อ -->
+                <div class="mb-3 col-6">
+                    <label for="name" class="form-label text-dark">{{ __('First Name') }}</label>
+                    <input type="text" id="name" name="name" class="form-control" required autofocus autocomplete="name">
+                </div>
+                <div class="mb-3 col-6">
+                    <label for="fname" class="form-label text-dark">{{ __('Last Name') }}</label>
+                    <input type="text" id="name" name="name" class="form-control" required autofocus autocomplete="name">
+                </div>
+            </div>
 
-                @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail &&! auth()->user()->hasVerifiedEmail())
-                    <div>
-                        <flux:text class="mt-4">
-                            {{ __('Your email address is unverified.') }}
+            <!-- อีเมล -->
+            <div class="mb-3">
+                <label for="email" class="form-label text-dark">{{ __('Email') }}</label>
+                <input type="email" id="email" name="email" class="form-control" wire:model="email" required autocomplete="email">
 
-                            <flux:link class="text-sm cursor-pointer" wire:click.prevent="resendVerificationNotification">
-                                {{ __('Click here to re-send the verification email.') }}
-                            </flux:link>
-                        </flux:text>
+                @if (auth()->user() instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! auth()->user()->hasVerifiedEmail())
+                    <div class="mt-2">
+                        <small class="text-danger">{{ __('Your email address is unverified.') }}</small>
+                        <a href="#" class="text-primary text-decoration-none" wire:click.prevent="resendVerificationNotification">
+                            {{ __('Click here to re-send the verification email.') }}
+                        </a>
 
                         @if (session('status') === 'verification-link-sent')
-                            <flux:text class="mt-2 font-medium !dark:text-green-400 !text-green-600">
-                                {{ __('A new verification link has been sent to your email address.') }}
-                            </flux:text>
+                            <p class="text-success mt-2">{{ __('A new verification link has been sent to your email address.') }}</p>
                         @endif
                     </div>
                 @endif
             </div>
 
-            <div class="flex items-center gap-4">
-                <div class="flex items-center justify-end">
-                    <flux:button variant="primary" type="submit" class="w-full">{{ __('Save') }}</flux:button>
-                </div>
+            <!-- ปุ่มบันทึก -->
+            <div class="d-flex justify-content-between align-items-center">
+                <button type="submit" class="btn btn-primary">{{ __('Save') }}</button>
 
-                <x-action-message class="me-3" on="profile-updated">
+                <span class="text-success" wire:loading wire:target="updateProfileInformation">
+                    {{ __('Saving...') }}
+                </span>
+
+                <span class="text-success" wire:loading.remove wire:target="updateProfileInformation">
                     {{ __('Saved.') }}
-                </x-action-message>
+                </span>
             </div>
         </form>
 
-        <livewire:settings.delete-user-form />
+        {{-- <livewire:settings.delete-user-form /> --}}
     </x-settings.layout>
 </section>

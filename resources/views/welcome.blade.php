@@ -16,68 +16,8 @@
 
 
     </head>
-    <body class="bg-light text-dark d-flex align-items-center justify-content-center min-vh-100">
+    <body class="bg-secondary text-dark d-flex align-items-center justify-content-center min-vh-100">
         <div class="container">
-            {{-- <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title text-center">Login</h5>
-                            <form wire:submit="login">
-                                <!-- Email Address -->
-                                <div class="form-group">
-                                    <label for="email">Email address</label>
-                                    <input
-                                        wire:model="email"
-                                        type="email"
-                                        name="email"
-                                        class="form-control"
-                                        required
-                                        autofocus
-                                        autocomplete="email"
-                                        placeholder="email@example.com"
-                                    />
-                                </div>
-
-                                <!-- Password -->
-                                <div class="form-group">
-                                    <label for="password">Password</label>
-                                    <input
-                                        wire:model="password"
-                                        type="password"
-                                        name="password"
-                                        class="form-control"
-                                        required
-                                        autocomplete="current-password"
-                                        placeholder="Password"
-                                    />
-                                </div>
-
-                                <!-- Remember Me -->
-                                <div class="form-check">
-                                    <input
-                                        wire:model="remember"
-                                        type="checkbox"
-                                        class="form-check-input"
-                                        id="remember"
-                                    />
-                                    <label class="form-check-label" for="remember">Remember me</label>
-                                </div>
-
-                                <div class="text-center mt-4">
-                                    <button type="submit" class="btn btn-primary w-100">Log in</button>
-                                </div>
-
-                                @if (Route::has('password.request'))
-                                    <div class="text-center mt-2">
-                                        <a href="{{ route('password.request') }}" class="text-muted">Forgot your password?</a>
-                                    </div>
-                                @endif
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
             @livewire('auth.login')
         </div>
 

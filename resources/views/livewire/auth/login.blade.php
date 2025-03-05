@@ -83,7 +83,8 @@ new #[Layout('components.layouts.auth')] class extends Component {
         <div class="col-md-4">
             <div class="card shadow-lg p-3 mb-5 bg-body rounded">
                 <div class="card-body">
-                    <h5 class="card-title text-center">Login</h5>
+                    <img src="{{ asset('image/RMUTI.png') }}" style="width: 64px; height: auto; display: block; margin: auto;">
+                    <h5 class="card-title text-center">ระบบแทงจำหน่ายครุภัณฑ์<br>สาขาเทคโนโลยีคอมพิวเตอร์</h5>
                     <form wire:submit="login">
                         <!-- Email Address -->
                         <div class="form-group">

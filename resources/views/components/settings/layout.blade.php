@@ -1,19 +1,36 @@
-<div class="flex items-start max-md:flex-col">
-    <div class="mr-10 w-full pb-4 md:w-[220px]">
-        <flux:navlist>
-            <flux:navlist.item :href="route('settings.profile')" wire:navigate>{{ __('Profile') }}</flux:navlist.item>
-            <flux:navlist.item :href="route('settings.password')" wire:navigate>{{ __('Password') }}</flux:navlist.item>
-            <flux:navlist.item :href="route('settings.appearance')" wire:navigate>{{ __('Appearance') }}</flux:navlist.item>
-        </flux:navlist>
+<div class="d-flex flex-column flex-md-row">
+    <!-- Sidebar เมนูการตั้งค่า -->
+    <div class="me-md-4 w-100 pb-4" style="max-width: 220px;">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <a href="{{ route('settings.profile') }}" class="text-decoration-none">{{ __('Profile') }}</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ route('settings.password') }}" class="text-decoration-none">{{ __('Password') }}</a>
+            </li>
+            <li class="list-group-item">
+                <a href="{{ route('settings.appearance') }}" class="text-decoration-none">{{ __('Appearance') }}</a>
+            </li>
+        </ul>
     </div>
 
-    <flux:separator class="md:hidden" />
+    <!-- เส้นคั่นเฉพาะใน Mobile -->
+    <hr class="d-md-none my-4" />
 
-    <div class="flex-1 self-stretch max-md:pt-6">
-        <flux:heading>{{ $heading ?? '' }}</flux:heading>
-        <flux:subheading>{{ $subheading ?? '' }}</flux:subheading>
+    <!-- Content ด้านขวา -->
+    {{-- <div class="flex border border-dark shadow-lg p-3 mb-5 bg-body rounded p-4">
+        <h3 class="mb-2 text-center">{{ $heading ?? '' }}</h3>
+        <p class="text-muted">{{ $subheading ?? '' }}</p>
 
-        <div class="mt-5 w-full max-w-lg">
+        <div class="mt-4 w-100" style="max-width: 600px;">
+            {{ $slot }}
+        </div>
+    </div> --}}
+    <div class="card border border-dark shadow-lg p-3 mb-5 bg-body rounded p-4">
+        <h3 class="mb-2">{{ $heading ?? '' }}</h3>
+        {{-- <p class="text-muted">{{ $subheading ?? '' }}</p> --}}
+
+        <div class="mt-4 w-200" style="max-width: 600px;">
             {{ $slot }}
         </div>
     </div>
