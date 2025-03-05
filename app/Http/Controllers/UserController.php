@@ -2,17 +2,14 @@
 
 namespace App\Http\Controllers;
 
-<<<<<<< HEAD
+
 use App\Models\Prefix;
 use App\Models\User;
 use App\Models\UserType;
-=======
->>>>>>> 3fef48bc14544366ee69680f689bd460d547a870
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-<<<<<<< HEAD
     //
     public function index()
     {
@@ -25,6 +22,8 @@ class UserController extends Controller
     {
         $users = User::all();
         $prefixes = Prefix::all();
+        $userTypes = ['admin' => 'Admin', 'staff' => 'Staff', 'user' => 'User'];
+    // return view('users.create', compact('userTypes'));
         return view('livewire.users.add', compact('users','prefixes'));
     }
 
@@ -32,12 +31,20 @@ class UserController extends Controller
     {
         $validated = $request->validate([
             'username' => 'required|unique:users',
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'user_type' => 'required|exists:user_types,id',
+            'prefix_id' => 'required|exists:prefixes,id',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
         ]);
 
         User::create([
             'username' => $validated['username'],
+            'firstname' => $validated['firstname'],
+            'lastname' => $validated['lastname'],
+            'user_type' => $validated['user_type'],
+            'prefix_id' => $validated['prefix_id'],
             'email' => $validated['email'],
             'password' => bcrypt($validated['password']),
         ]);
@@ -69,33 +76,6 @@ class UserController extends Controller
         return redirect()->route('user.show')->with('success', 'User type updated successfully!');
     }
 
-
-
-=======
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
     /**
      * Display the specified resource.
      */
@@ -113,19 +93,10 @@ class UserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
     {
         //
     }
->>>>>>> 3fef48bc14544366ee69680f689bd460d547a870
 }

@@ -63,18 +63,13 @@ class User extends Authenticatable
             ->implode('');
     }
 
-<<<<<<< HEAD
-    // public function usertype()
-    // {
-    //     return $this->belongsTo(UserType::class, 'usertype_id'); // แก้ไขชื่อคอลัมน์ให้ตรงกับฐานข้อมูล
-    // }
+
 
     public function prefix()
     {
         return $this->belongsTo(Prefix::class, 'prefix_id'); // แก้ไขชื่อคอลัมน์ให้ตรงกับฐานข้อมูล
-=======
+    }
     public function equipments() : HasMany {
         return $this->hasMany(Equipment::class);
->>>>>>> 3fef48bc14544366ee69680f689bd460d547a870
     }
 }

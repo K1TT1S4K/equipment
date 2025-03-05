@@ -34,7 +34,6 @@ class PrefixSeeder extends Seeder
                 'created_at' => now(),
                 'updayed_at' => now(),
             ],
-<<<<<<< HEAD
             [
                 'name' => 'ดร.',
                 'created_at' => now(),
@@ -55,8 +54,6 @@ class PrefixSeeder extends Seeder
                 'created_at' => now(),
                 'updayed_at' => now(),
             ],
-=======
->>>>>>> 3fef48bc14544366ee69680f689bd460d547a870
         ]);
     }
 }

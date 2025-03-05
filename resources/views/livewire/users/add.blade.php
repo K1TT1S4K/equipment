@@ -30,6 +30,15 @@
                     </div>
                 </div>
                 <div class="mb-3">
+                    <label class="form-label">User_Type</label>
+                    <select name="user_type" class="form-control" required>
+                        <option value="">-- เลือกประเภทผู้ใช้ --</option>
+                        @foreach($userTypes as $userType)
+                            <option value="{{ $userType->id }}">{{ $userType->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <div class="mb-3">
                     <label class="form-label">Email</label>
                     <input type="email" name="email" class="form-control" required>
                 </div>
