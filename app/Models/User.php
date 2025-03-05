@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -62,6 +63,7 @@ class User extends Authenticatable
             ->implode('');
     }
 
+<<<<<<< HEAD
     // public function usertype()
     // {
     //     return $this->belongsTo(UserType::class, 'usertype_id'); // แก้ไขชื่อคอลัมน์ให้ตรงกับฐานข้อมูล
@@ -70,5 +72,9 @@ class User extends Authenticatable
     public function prefix()
     {
         return $this->belongsTo(Prefix::class, 'prefix_id'); // แก้ไขชื่อคอลัมน์ให้ตรงกับฐานข้อมูล
+=======
+    public function equipments() : HasMany {
+        return $this->hasMany(Equipment::class);
+>>>>>>> 3fef48bc14544366ee69680f689bd460d547a870
     }
 }
