@@ -38,6 +38,11 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link active {{ request()->routeIs('documents') ? 'active' : '' }}" href="{{ route('document') }}">
+                            <i class="bi bi-house-door"></i> เอกสาร
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link active {{ request()->routeIs('users') ? 'active' : '' }}" href="{{ route('user') }}">
                             <i class="bi bi-house-door"></i> บุคลากร
                         </a>

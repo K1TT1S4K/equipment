@@ -16,6 +16,10 @@ Route::view('equipment', 'livewire.equipments.show')
     ->middleware(['auth', 'verified'])
     ->name('equipment');
 
+Route::view('document', 'livewire.documents.show')
+    ->middleware(['auth', 'verified'])
+    ->name('document');
+
 // Route::get('user', [UserController::class, 'index'])
 //     ->middleware(['auth'])
 //     ->name('user');

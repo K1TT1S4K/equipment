@@ -22,9 +22,9 @@ class UserController extends Controller
     {
         $users = User::all();
         $prefixes = Prefix::all();
-        $userTypes = ['admin' => 'Admin', 'staff' => 'Staff', 'user' => 'User'];
+        $userTypes = User::all();
     // return view('users.create', compact('userTypes'));
-        return view('livewire.users.add', compact('users','prefixes'));
+        return view('livewire.users.add', compact('users','prefixes','userTypes'));
     }
 
     public function store(Request $request)
