@@ -27,22 +27,22 @@
                         <td class="text-center">{{ $key + 1 }}</td>
                         <td class="border">{{ $user->username }}</td>
                         <td class="border">{{ $user->prefix->name }}</td>
-                        <td class="border">{{ $user->first_name }}</td>
-                        <td class="border">{{ $user->last_name }}</td>
-                        {{-- <td class="border text-center">{{ $user->usertype->name }}</td> --}}
-                        <td class="border text-center">
+                        <td class="border">{{ $user->firstname }}</td>
+                        <td class="border">{{ $user->lastname }}</td>
+                        <td class="border text-center">{{ $user->user_type }}</td>
+                        {{-- <td class="border text-center">
                             <form action="{{ route('user.update', $user) }}" method="POST">
                                 @csrf
                                 @method('PUT')
-                                <select name="usertype_id" class="form-select" onchange="this.form.submit()">
-                                    @foreach($usertypes as $usertype)
-                                        <option value="{{ $usertype->id }}" {{ $user->usertype_id == $usertype->id ? 'selected' : '' }}>
-                                            {{ $usertype->name }}
+                                <select name="user_type" class="form-select" onchange="this.form.submit()">
+                                    @foreach($users as $user)
+                                        <option value="{{ $user->id }}" {{ $user->user_id == $user->id ? 'selected' : '' }}>
+                                            {{ $user->name }}
                                         </option>
                                     @endforeach
                                 </select>
                             </form>
-                        </td>
+                        </td> --}}
                         <td class="border">{{ $user->email }}</td>
                         <td class="text-center">
                             <button class="btn btn-warning">Edit</button>

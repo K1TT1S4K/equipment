@@ -19,7 +19,11 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $fillable = [
-        'name',
+        'username',
+        'prefix_id',
+        'lastname',
+        'firstname',
+        'user_type',
         'email',
         'password',
     ];
@@ -56,5 +60,15 @@ class User extends Authenticatable
             ->explode(' ')
             ->map(fn (string $name) => Str::of($name)->substr(0, 1))
             ->implode('');
+    }
+
+    // public function usertype()
+    // {
+    //     return $this->belongsTo(UserType::class, 'usertype_id'); // แก้ไขชื่อคอลัมน์ให้ตรงกับฐานข้อมูล
+    // }
+
+    public function prefix()
+    {
+        return $this->belongsTo(Prefix::class, 'prefix_id'); // แก้ไขชื่อคอลัมน์ให้ตรงกับฐานข้อมูล
     }
 }

@@ -14,8 +14,7 @@ class UserController extends Controller
     {
         $users = User::all();
         $prefixes = Prefix::all();
-        $usertypes = UserType::all();
-        return view('livewire.users.show', compact('users', 'prefixes', 'usertypes'));
+        return view('livewire.users.show', compact('users', 'prefixes'));
     }
 
     public function create()
@@ -45,19 +44,19 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
         // ตรวจสอบค่าที่ได้รับจากฟอร์ม
-        \Log::info('Current user_type_id: ' . $user->usertype_id);
-        \Log::info('New user_type_id from request: ' . $request->usertype_id);
+        \Log::info('Current user_type_id: ' . $user->user_type);
+        \Log::info('New user_type_id from request: ' . $request->user_type);
 
         // ตรวจสอบว่า user_type_id ที่ได้รับจากฟอร์มมีค่าถูกต้อง
         $validated = $request->validate([
-            'usertype_id' => 'required|exists:user_types,id',
+            'user_type' => 'required|exists:user_types,id',
         ]);
 
         // อัปเดต user_type_id
-        $user->usertype_id = $validated['usertype_id'];
+        $user->user_type = $validated['user_type'];
 
         // พิมพ์ค่า $user ก่อนบันทึก
-        dd($user); // ตรวจสอบว่า $user->usertype_id ถูกอัปเดตหรือไม่
+        dd($user); // ตรวจสอบว่า $user->user_type ถูกอัปเดตหรือไม่
 
         // บันทึกการเปลี่ยนแปลง
         $user->save();
