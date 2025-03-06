@@ -24,10 +24,12 @@
             <x-placeholder-pattern class="absolute inset-0 size-full stroke-gray-900/20 dark:stroke-neutral-100/20" />
         </div>
     </div> --}}
-    <div class="row">
+    <div class="row d-flex justify-content-center">
         <div class="col-3 bg-primary text-white p-3">Column 1</div>
         <div class="col-3 bg-secondary text-white p-3">Column 2</div>
         <div class="col-3 bg-success text-white p-3">Column 3</div>
+        @can('manage-equipments')
         <div class="col-3 bg-danger text-white p-3">Column 4</div>
+        @endcan
     </div>
 </x-layouts.app>

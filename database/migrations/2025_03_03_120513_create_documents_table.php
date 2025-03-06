@@ -16,7 +16,11 @@ return new class extends Migration
             $table->string('path');
             $table->string('document_type');
             $table->date('date');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้สร้าง
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้แก้ไขล่าสุด
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้ลบ
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
