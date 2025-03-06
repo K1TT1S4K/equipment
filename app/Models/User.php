@@ -69,7 +69,7 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Prefix::class, 'prefix_id'); // แก้ไขชื่อคอลัมน์ให้ตรงกับฐานข้อมูล
     }
-    public function equipments() : HasMany {
-        return $this->hasMany(Equipment::class);
-    }
+    // public function equipments() : HasMany {
+    //     return $this->hasMany(Equipment::class);
+    // }
 }

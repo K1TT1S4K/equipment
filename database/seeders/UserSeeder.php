@@ -74,6 +74,17 @@ class UserSeeder extends Seeder
                 'password' => static::$password ??= Hash::make('password'),
                 'remember_token' => Str::random(10),
             ],
+            [
+                'username' => 'user1',
+                'prefix_id' => 1,
+                'firstname' => 'กิตติศักดิ์',
+                'lastname' => 'ผาทอง',
+                'user_type' => 'admin',
+                'email' => 'test@example.com',
+                'email_verified_at' => now(),
+                'password' => static::$password ??= Hash::make('password'),
+                'remember_token' => Str::random(10),
+            ],
         ]);
     }
 }

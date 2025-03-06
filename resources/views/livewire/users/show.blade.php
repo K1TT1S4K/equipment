@@ -29,20 +29,21 @@
                         <td class="border">{{ $user->prefix->name }}</td>
                         <td class="border">{{ $user->firstname }}</td>
                         <td class="border">{{ $user->lastname }}</td>
-                        <td class="border text-center">{{ $user->user_type }}</td>
-                        {{-- <td class="border text-center">
-                            <form action="{{ route('user.update', $user) }}" method="POST">
+                        {{-- <td class="border text-center">{{ $user->user_type }}</td> --}}
+                        <td>
+                            <form action="{{ route('user.update', $user->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('PUT')
                                 <select name="user_type" class="form-select" onchange="this.form.submit()">
-                                    @foreach($users as $user)
-                                        <option value="{{ $user->id }}" {{ $user->user_id == $user->id ? 'selected' : '' }}>
-                                            {{ $user->name }}
+                                    @foreach($userTypes as $type)
+                                        <option value="{{ $type }}" {{ $user->user_type == $type ? 'selected' : '' }}>
+                                            {{ ucfirst($type) }}
                                         </option>
                                     @endforeach
                                 </select>
                             </form>
-                        </td> --}}
+                        </td>
+
                         <td class="border">{{ $user->email }}</td>
                         <td class="text-center">
                             <button class="btn btn-warning">Edit</button>

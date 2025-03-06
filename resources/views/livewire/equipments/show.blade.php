@@ -82,18 +82,22 @@
                 <table class="table table-striped table-hover">
                     <thead class="table-dark">
                         <tr class="text-center">
-                            <th class="border align-middle">-</th>
                             <th class="border align-middle">
-                                <input class="form-check-input" type="checkbox" id="selectAll">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="selectAll">
+                                </div>
                             </th>
-                            <th class="border align-middle">ลำดับ</th>
+                            <th class="border align-middle">#</th>
                             <th class="border align-middle">รหัสครุภัณฑ์</th>
-                            <th class="border">รายการ <br>( ยี่ห้อ, ชนิด, แบบ, ขนาดและลักษณะ )</th>
+                            <th class="border" style="width: 20%">รายการ <br>( ยี่ห้อ, ชนิด, แบบ, ขนาดและลักษณะ )</th>
                             <th class="border align-middle">หน่วยนับ</th>
-                            <th class="border align-middle">จำนวน</th>
+                            <th class="border align-middle">จำนวน<br>คงเหลือ</th>
                             <th class="border">ราคาต่อหน่วย <br>(บาท)</th>
                             <th class="border align-middle">ราคารวม</th>
+                            {{-- <th class="border align-middle">กลุ่ม</th> --}}
+                            <th class="border align-middle">ประเภท</th>
                             <th class="border align-middle">สถานะ</th>
+                            <th class="border align-middle">หัวข้อ</th>
                             <th class="border align-middle">หมายเหตุ</th>
                             <th class="border align-middle">สถานที่</th>
                             <th class="border align-middle">ผู้ดูแลครุภัณฑ์</th>
@@ -101,28 +105,33 @@
                             <th class="border align-middle">วันที่สร้าง</th> --}}
                             <th class="border align-middle">จัดการ</th>
                         </tr>
+
                     </thead>
-                    <tbody class="table-bordered border-dark">
-                        {{-- @forelse ($equipments as $key => $item) --}}
-                            <tr>
-                                <td class="border border-dark text-center">-</td>
-                                <td class="border border-dark text-center align-middle">
-                                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
+                    <tbody>
+                        @forelse ($equipments as $key => $equipment)
+                            <tr class="text-center border border-dark">
+                                <td class="border border-dark align-middle">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="selectAll">
+                                    </div>
                                 </td>
-                                <td class="border border-dark text-center align-middle">1</td>
-                                <td class="border border-dark text-center align-middle">123-456-789</td>
-                                <td class="border border-dark text-start align-middle">labtop lenovo</td>
-                                <td class="border border-dark text-center align-middle">เครื่อง</td>
-                                <td class="border border-dark text-center align-middle">2</td>
-                                <td class="border border-dark text-end align-middle">23,000.00</td>
-                                <td class="border border-dark text-end align-middle">46,000.00</td>
-                                <td class="border border-dark text-center align-middle">พบ</td>
-                                <td class="border border-dark text-center align-middle">-</td>
-                                <td class="border border-dark text-center align-middle">อท.502</td>
-                                <td class="border border-dark text-center align-middle">สมชาย ใจดี</td>
-                                {{-- <td class="border border-dark text-center align-middle">{{ $item->updated_at }}</td>
-                                <td class="border border-dark text-center align-middle">{{ $item->created_at }}</td> --}}
-                                <td class="border border-dark text-center align-middle">
+                                <td class="border border-dark align-middle">{{ $key + 1}} <br> ({{ $equipment->amount }})</td>
+                                <td class="border border-dark align-middle">{{ $equipment->number}}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->name }}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->equipmentUnit->name }}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->amount }}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->price }}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->total_price }}</td>
+                                {{-- <td class="border border-dark align-middle">{{ $equipment->group }}</td> --}}
+                                <td class="border border-dark align-middle">{{ optional($equipment->equipmentType)->name }}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->status }}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->title->name }}</td>
+                                <td class="border border-dark align-middle">{{ $equipment->description }}</td>
+                                <td class="border border-dark align-middle">{{ optional($equipment->location)->name }}</td>
+                                <td class="border border-dark align-middle">{{ optional($equipment->user)->name }}</td>
+                                {{-- <td class="border border-dark align-middle">{{ $item->updated_at }}</td>
+                                <td class="border border-dark align-middle">{{ $item->created_at }}</td> --}}
+                                <td class="border border-dark align-middle">
                                     <!-- ปุ่มเปิดฟอร์มแก้ไข -->
                                     {{-- <button @click="open = true; equipmentToEdit = @json($item)"
                                         class="btn btn-warning">แก้ไข</button> --}}
@@ -137,47 +146,15 @@
                                     </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td class="border border-dark text-center">-</td>
-                                <td class="border border-dark text-center align-middle">
-                                    <input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="" aria-label="...">
-                                </td>
-                                <td class="border border-dark text-center align-middle">1</td>
-                                <td class="border border-dark text-center align-middle">123-456-789</td>
-                                <td class="border border-dark text-start align-middle">labtop lenovo</td>
-                                <td class="border border-dark text-center align-middle">เครื่อง</td>
-                                <td class="border border-dark text-center align-middle">2</td>
-                                <td class="border border-dark text-end align-middle">23,000.00</td>
-                                <td class="border border-dark text-end align-middle">46,000.00</td>
-                                <td class="border border-dark text-center align-middle">พบ</td>
-                                <td class="border border-dark text-center align-middle">-</td>
-                                <td class="border border-dark text-center align-middle">อท.502</td>
-                                <td class="border border-dark text-center align-middle">สมชาย ใจดี</td>
-                                {{-- <td class="border border-dark text-center align-middle">{{ $item->updated_at }}</td>
-                                <td class="border border-dark text-center align-middle">{{ $item->created_at }}</td> --}}
-                                <td class="border border-dark text-center align-middle">
-                                    <!-- ปุ่มเปิดฟอร์มแก้ไข -->
-                                    {{-- <button @click="open = true; equipmentToEdit = @json($item)"
-                                        class="btn btn-warning">แก้ไข</button> --}}
-                                    <button class="btn btn-warning">แก้ไข</button>
-
-                                    <!-- ปุ่มลบ (จะใช้ฟอร์ม POST เพื่อป้องกันการใช้ GET method) -->
-                                    <form action="#" method="POST" style="display:inline;">
-                                        @csrf
-                                        @method('DELETE') <!-- ใช้ HTTP DELETE สำหรับการลบ -->
-                                        <button type="submit" class="btn btn-danger"
-                                            onclick="return confirm('คุณต้องการลบข้อมูลนี้จริงหรือไม่?')">ลบ</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        {{-- @empty
+                        @empty
                             <tr>
                                 <td colspan="3" class="text-center">ไม่มีข้อมูล</td>
                             </tr>
-                        @endforelse --}}
+                        @endforelse
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
+
 </x-layouts.app>
