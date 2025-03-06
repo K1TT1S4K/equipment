@@ -8,7 +8,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Title extends Model
 {
     //
-    public function equipments() : HasMany {
-        return $this->hasMany(Equipment::class);
-    }
+    protected $fillable = [
+        'name'
+    ];
+    // public function equipments() : HasMany {
+    //     return $this->hasMany(Equipment::class);
+    // }
 }

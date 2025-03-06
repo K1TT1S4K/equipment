@@ -15,7 +15,8 @@ class UserController extends Controller
     {
         $users = User::all();
         $prefixes = Prefix::all();
-        return view('livewire.users.show', compact('users', 'prefixes'));
+        $userTypes = ['admin', 'department_officer','administrative_officer', 'user']; // หรือถ้าคุณใช้ตารางที่เก็บ user_types
+        return view('livewire.users.show', compact('users', 'prefixes', 'userTypes'));
     }
 
     public function create()
@@ -52,29 +53,38 @@ class UserController extends Controller
         return redirect()->route('livewire.users.show')->with('success', 'User added successfully!');
     }
 
-    public function update(Request $request, User $user)
+    public function update(Request $request, $id)
     {
-        // ตรวจสอบค่าที่ได้รับจากฟอร์ม
-        \Log::info('Current user_type_id: ' . $user->user_type);
-        \Log::info('New user_type_id from request: ' . $request->user_type);
+        // ค้นหาผู้ใช้
+        $user = User::findOrFail($id);
 
-        // ตรวจสอบว่า user_type_id ที่ได้รับจากฟอร์มมีค่าถูกต้อง
+        // ตรวจสอบค่า user_type ก่อน
+        \Log::info('Current user_type: ' . $user->user_type);
+
+        // ตรวจสอบค่าจาก request
         $validated = $request->validate([
-            'user_type' => 'required|exists:user_types,id',
+            'user_type' => 'required|in:admin,department_officer,administrative_officer,user', // ตรวจสอบค่าที่รับจากฟอร์ม
         ]);
 
-        // อัปเดต user_type_id
+        // ตรวจสอบค่าของ user_type หลังจากรับข้อมูลจาก request
+        \Log::info('New user_type from request: ' . $validated['user_type']);
+
+        // อัปเดต user_type
         $user->user_type = $validated['user_type'];
 
-        // พิมพ์ค่า $user ก่อนบันทึก
-        dd($user); // ตรวจสอบว่า $user->user_type ถูกอัปเดตหรือไม่
+        // ตรวจสอบค่าของ user_type หลังการอัปเดต
+        \Log::info('Updated user_type: ' . $user->user_type);
 
         // บันทึกการเปลี่ยนแปลง
         $user->save();
 
-        // ส่งผู้ใช้กลับไปยังหน้ารายการ
-        return redirect()->route('user.show')->with('success', 'User type updated successfully!');
+        // ส่งผู้ใช้กลับไปที่หน้าจัดการผู้ใช้
+        return redirect()->route('user')->with('success', 'User type updated successfully!');
     }
+
+
+
+
 
     /**
      * Display the specified resource.
@@ -87,10 +97,14 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id)
     {
-        //
+        $user = User::findOrFail($id); // ค้นหาผู้ใช้ที่ต้องการแก้ไข
+        $userTypes = ['admin', 'department_officer','administrative_officer', 'user']; // ตัวเลือก user type ที่สามารถเลือกได้
+
+        return view('user.edit', compact('user', 'userTypes'));
     }
+
 
     /**
      * Remove the specified resource from storage.

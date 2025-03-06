@@ -8,12 +8,15 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class Equipment_unit extends Model
 {
     //
-    public function equipments(): HasMany
-    {
-        return $this->hasMany(Equipment::class);
-    }
+    protected $fillable = [
+        'name',
+    ];
+    // public function equipments(): HasMany
+    // {
+    //     return $this->hasMany(Equipment::class);
+    // }
 
-    public function Equipment_unit() : HasMany {
-        return $this->hasMany(Equipment_unit::class);
-    }
+    // public function Equipment_unit() : HasMany {
+    //     return $this->hasMany(Equipment_unit::class);
+    // }
 }
