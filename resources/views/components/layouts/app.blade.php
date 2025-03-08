@@ -21,7 +21,7 @@
     <x-layouts.app.sidebar>
     </x-layouts.app.sidebar>
     <main>
-        <div class="container-fluid mt-4">
+        <div class="container mt-4">
             {{ $slot }}
         </div>
     </main>

@@ -47,6 +47,13 @@
                             <i class="bi bi-house-door"></i> บุคลากร
                         </a>
                     </li>
+                    @can('manage-equipments')
+                    <li class="nav-item">
+                        <a class="nav-link active {{ request()->routeIs('users') ? 'active' : '' }}" href="{{ route('user') }}">
+                            <i class="bi bi-house-door"></i> ทดสอบ
+                        </a>
+                    </li>
+                    @endcan
                 </ul>
 
                 <!-- Navbar Icons -->

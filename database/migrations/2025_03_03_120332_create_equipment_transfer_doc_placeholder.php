@@ -32,7 +32,11 @@ return new class extends Migration
             $table->string('third_witness_position');
             $table->string('approver_name');
             $table->string('approver_position');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้สร้าง
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้แก้ไขล่าสุด
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้ลบ
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

@@ -26,7 +26,11 @@ return new class extends Migration
             $table->string('chairman_referee');
             $table->string('referee');
             $table->string('referee_and_secretary');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้สร้าง
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้แก้ไขล่าสุด
+            $table->foreignId('deleted_by')->nullable()->constrained('users')->onDelete('set null'); // ผู้ลบ
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
