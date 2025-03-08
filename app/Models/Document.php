@@ -9,10 +9,16 @@ class Document extends Model
 {
     //
     protected $fillable = [
-        'name',
+        'path',
+        'document_type',
+        'date'
     ];
-    public function equipment_documents(): HasMany
-    {
-        return $this->hasMany(Equipment_document::class);
-    }
+    // public function equipment_documents(): HasMany
+    // {
+    //     return $this->hasMany(Equipment_document::class);
+    // }
+    // public function decrementType()
+    // {
+    //     return $this->hasMany(Document::class);
+    // }
 }

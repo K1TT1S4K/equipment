@@ -16,35 +16,35 @@ class DocumentSeeder extends Seeder
         DB::table('documents')->insert([
             [
                 'path' => 'documents/'. 2020+543 .'_equipment_disposal_request' . '_01'. '.pdf',
-                'document_type' => 'equipment_disposal_request',
+                'document_type' => 'ยื่นแทงจำหน่ายครุภัณฑ์',
                 'date' => now()->format('2020-m-d'),
                 'created_at' => now()->format('2020-m-d H:i:s'),
                 'updated_at' => now()->format('2020-m-d H:i:s')
             ],
             [
                 'path' => 'documents/'. 2020+543 .'_equipment_disposal_form' . '_01'. '.pdf',
-                'document_type' => 'equipment_disposal_form',
+                'document_type' => 'แทงจำหน่ายครุภัณฑ์',
                 'date' => now()->format('2020-m-d'),
                 'created_at' => now()->format('2020-m-d H:i:s'),
                 'updated_at' => now()->format('2020-m-d H:i:s')
             ],
             [
                 'path' => 'documents/'. 2020+543 .'_equipment_transfer' . '_01'. '.pdf',
-                'document_type' => 'equipment_transfer',
+                'document_type' => 'โอนครุภัณฑ์',
                 'date' => now()->format('2020-m-d'),
                 'created_at' => now()->format('2020-m-d H:i:s'),
                 'updated_at' => now()->format('2020-m-d H:i:s')
             ],
             [
                 'path' => 'documents/'. 2020+543 .'_equipment_transfer' . '_02'. '.pdf',
-                'document_type' => 'equipment_transfer',
+                'document_type' => 'โอนครุภัณฑ์',
                 'date' => now()->format('2020-m-d'),
                 'created_at' => now()->format('2020-m-d H:i:s'),
                 'updated_at' => now()->format('2020-m-d H:i:s')
             ],
             [
                 'path' => 'documents/'. 2020+543 .'_equipment_transfer' . '_03'. '.pdf',
-                'document_type' => 'equipment_transfer',
+                'document_type' => 'โอนครุภัณฑ์',
                 'date' => now()->format('2020-m-d'),
                 'created_at' => now()->format('2020-m-d H:i:s'),
                 'updated_at' => now()->format('2020-m-d H:i:s')
@@ -52,35 +52,35 @@ class DocumentSeeder extends Seeder
 
             [
                 'path' => 'documents/'.(now()->year + 543) .'_equipment_disposal_request' . '_01'. '.pdf',
-                'document_type' => 'equipment_disposal_request',
+                'document_type' => 'ยื่นแทงจำหน่ายครุภัณฑ์',
                 'date' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'path' => 'documents/'.(now()->year + 543) .'_equipment_disposal_form' . '_01'. '.pdf',
-                'document_type' => 'equipment_disposal_form',
+                'document_type' => 'แทงจำหน่ายครุภัณฑ์',
                 'date' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'path' => 'documents/'.(now()->year + 543) .'_equipment_transfer' . '_01'. '.pdf',
-                'document_type' => 'equipment_transfer',
+                'document_type' => 'โอนครุภัณฑ์',
                 'date' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'path' => 'documents/'.(now()->year + 543) .'_equipment_transfer' . '_02'. '.pdf',
-                'document_type' => 'equipment_transfer',
+                'document_type' => 'โอนครุภัณฑ์',
                 'date' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
                 'path' => 'documents/'.(now()->year + 543) .'_equipment_transfer' . '_03'. '.pdf',
-                'document_type' => 'equipment_transfer',
+                'document_type' => 'โอนครุภัณฑ์',
                 'date' => now(),
                 'created_at' => now(),
                 'updated_at' => now()
