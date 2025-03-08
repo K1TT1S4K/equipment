@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EquipmentController;
 use App\Http\Controllers\UserController;
+use App\Http\Livewire\EditDocument;
 use Illuminate\Support\Facades\Route;
 use Livewire\Volt\Volt;
 
@@ -17,9 +19,9 @@ Route::view('dashboard', 'dashboard')
 //     ->middleware(['auth', 'verified'])
 //     ->name('equipment');
 
-Route::view('document', 'livewire.documents.show')
-    ->middleware(['auth', 'verified'])
-    ->name('document');
+// Route::view('document', 'livewire.documents.show')
+//     ->middleware(['auth', 'verified'])
+//     ->name('document');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('equipment', [EquipmentController::class, 'index'])->name('equipment');
@@ -39,20 +41,23 @@ Route::middleware(['auth'])->group(function () {
 //     ->name('user.add');
 
 Route::middleware(['auth'])->group(function () {
-    // เส้นทางแสดงรายชื่อผู้ใช้
     Route::get('user', [UserController::class, 'index'])->name('user');
-    // เส้นทางแสดงฟอร์มเพิ่มผู้ใช้
     Route::get('user/add', [UserController::class, 'create'])->name('user.add');
-    // เส้นทางสำหรับการบันทึกข้อมูลผู้ใช้ (POST)
     Route::post('user', [UserController::class, 'store'])->name('user.store');
-
     Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');
-
     Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
-
     Route::put('user/{id}', [UserController::class, 'update'])->name('user.update');
-
     Route::delete('user/{id}', [UserController::class, 'destroy'])->name('user.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('document', [DocumentController::class,'index'])->name('document');
+    Route::get('document/search', [DocumentController::class, 'search'])->name('document.search');
+    Route::get('document/create', [DocumentController::class, 'create'])->name('document.create');
+    Route::post('document', [DocumentController::class, 'store'])->name('document.store');
+    Route::get('document/{id}/edit', [DocumentController::class, 'edit'])->name('documents.edit');
+    Route::put('document/{id}', [DocumentController::class, 'update'])->name('documents.update');
+    Route::delete('document/{id}', [DocumentController::class, 'destroy'])->name('document.delete');
 });
 
 // Route::middleware(['auth'])->group(function () {
